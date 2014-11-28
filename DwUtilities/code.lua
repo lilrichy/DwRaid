@@ -1,5 +1,5 @@
 
---[[ Downwinds Addon Utilities Version 0.10
+--[[ Downwinds Addon Utilities
 
 A small collection of commands that are useful for a raid leader, grouped together on a simple panel with 
 buttons to make setting up and managing raid groups quicker and easier.--]]
