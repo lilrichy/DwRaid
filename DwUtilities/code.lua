@@ -20,10 +20,10 @@ LogInEventFrame:SetScript("OnEvent", function(self,event,...)
 	
     ChatFrame1:AddMessage("Hello ".. UnitName("Player").. " DwUtilities has been Loaded!");
 
-	---[[This line should be commented by removing 1 " - " at the start, when not developing. Starts addon UI immediately on login for development 
-	DwUtilities_Frame:Show();
+	--[[This line should be commented by removing 1 " - " at the start, when not developing. Starts addon UI immediately on login for development 
+	DwUtilities_Frame:Show();--]]
 	DisableUnused();--Temporary disable buttons
-	--]]
+	
 end)
 
 
@@ -34,7 +34,7 @@ local EnterCombatFrame = CreateFrame("Frame")
 EnterCombatFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 EnterCombatFrame:SetScript("OnEvent", function(self,event,...)
 DwUtilities_Frame:Hide();
-ChatFrame1:AddMessage("Entering Combat, DwUtilities is now hidden type /dw to show again.");
+--ChatFrame1:AddMessage("Entering Combat, DwUtilities is now hidden type /dw to show again.");
 end)
 
 --Show the UI when Joining a group and update the buttons text
