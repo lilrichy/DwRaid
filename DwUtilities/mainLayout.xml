@@ -1,17 +1,17 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
  
-   <Frame name="DwUtilities_Frame" toplevel="true" parent="UIParent" enableMouse="true" movable="true" frameStrata="LOW">
-   <!--Main Frame Size-->
-  <Size x="212" y="256" />
+<Frame name="DwUtilities_Frame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
+	<!--Main Frame Size-->
+	<Size x="212" y="256"/>
   
-  
-  <!--Window background, boarder, and Title bar Layout-->
-  <Anchors>
-    <Anchor point="CENTER" />
-  </Anchors>
-     <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" 
+	<!--Window background, boarder, and Title bar Layout-->
+	<Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" 
                 edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
                 <BackgroundInsets>
                         <AbsInset left="11" right="12" top="12" bottom="11"/>
@@ -110,7 +110,7 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick><!--ToDo--> </OnClick>
+                                <OnClick><!--ToDo--></OnClick>
                         </Scripts>
         </Button>	
 		
@@ -123,7 +123,7 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick><!--ToDo--> </OnClick>
+                                <OnClick><!--ToDo--></OnClick>
                         </Scripts>
         </Button>	
 		
@@ -135,8 +135,9 @@
                                 <Offset><AbsDimension x="-12" y="-30"/></Offset>
                                 </Anchor>
                         </Anchors>
-                        <Scripts>
-                                <OnClick><!--ToDo--> </OnClick>
+                        <Scripts> 
+						
+                                <OnClick>DwUtilitiesOptionsFrame:Show();</OnClick>
                         </Scripts>
         </Button>	
 		
@@ -168,22 +169,22 @@
 	
   <Scripts>
     <OnLoad>
-      tinsert(UISpecialFrames, self:GetName());
-	   self:RegisterForDrag("LeftButton");
+		tinsert(UISpecialFrames, self:GetName());
+		self:RegisterForDrag("LeftButton");
 	</OnLoad>
-		<OnDragStart>
-       if(button == "LeftButton") then
+	<OnDragStart>
+		if(button == "LeftButton") then
         self:StartMoving();
-       end
-		</OnDragStart>
-		<OnDragStop>
-       self:StopMovingOrSizing();
-		</OnDragStop>
+		end
+	</OnDragStart>
+	<OnDragStop>
+		self:StopMovingOrSizing();
+	</OnDragStop>
     <OnShow>
-      PlaySound("igCharacterInfoOpen");
+		PlaySound("igCharacterInfoOpen");
     </OnShow>
     <OnHide>
-      PlaySound("igCharacterInfoClose");
+		PlaySound("igCharacterInfoClose");
     </OnHide>
   </Scripts>
   

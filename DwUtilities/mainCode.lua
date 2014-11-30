@@ -7,23 +7,20 @@ buttons to make setting up and managing raid groups quicker and easier.--]]
 --Register Slash Command to show UI
 SLASH_DOWNWIND1 = '/dw';
 function SlashCmdList.DOWNWIND(msg, editbox)
- GroupButtonUpdate();
- UpdateLootMethButton();
+ EnableDisable();
  DwUtilities_Frame:Show();
 end
 
 --Functions that happen when Player Logs in or does Reload
 local LogInEventFrame = CreateFrame("Frame")
-LogInEventFrame:RegisterEvent("ADDON_LOADED")
+LogInEventFrame:RegisterEvent("PLAYER_LOGIN")
 LogInEventFrame:SetScript("OnEvent", function(self,event,...) 
-	EnableDisable();
-	
-    ChatFrame1:AddMessage("Hello ".. UnitName("Player").. " DwUtilities has been Loaded!");
-
+	EnableDisable();  
+	DisableUnused();--Temporary disable buttons
+	ChatFrame1:AddMessage("Hello ".. UnitName("Player").. " DwUtilities has been Loaded!");
+	DwUtilities_VARIABLES_LOADED();
 	--[[This line should be commented by removing 1 " - " at the start, when not developing. Starts addon UI immediately on login for development 
 	DwUtilities_Frame:Show();--]]
-	DisableUnused();--Temporary disable buttons
-	
 end)
 
 
@@ -33,19 +30,24 @@ end)
 local EnterCombatFrame = CreateFrame("Frame")
 EnterCombatFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 EnterCombatFrame:SetScript("OnEvent", function(self,event,...)
-DwUtilities_Frame:Hide();
---ChatFrame1:AddMessage("Entering Combat, DwUtilities is now hidden type /dw to show again.");
+	if DwUtilitiesConfigValues[DwUtilitiesRealm][DwUtilitiesChar].HideOnCombat then
+		ChatFrame1:AddMessage("Entering Combat, DwUtilities is now hidden type /dw to show again.");
+		DwUtilities_Frame:Hide();
+		DwUtilitiesOptionsFrame:Hide();
+	end
 end)
 
 --Show the UI when Joining a group and update the buttons text
 local JoinGroupFrame = CreateFrame("Frame")
 JoinGroupFrame:RegisterEvent("GROUP_JOINED")
 JoinGroupFrame:SetScript("OnEvent", function(self,event,...)
-	EnableDisable();
-DwUtilities_Frame:Show();
+if DwUtilitiesConfigValues[DwUtilitiesRealm][DwUtilitiesChar].Enabled then
+	if DwUtilitiesConfigValues[DwUtilitiesRealm][DwUtilitiesChar].ShowWhenGrouped then
+		EnableDisable();
+		DwUtilities_Frame:Show();
+	end
+end
 end)
-
-
 
 
 
@@ -88,14 +90,19 @@ end)
 
 --Update the Raid / Party Button Text and state
 function GroupButtonUpdate()
-local DwUtilities_GroupSize = GetNumGroupMembers();
+local DwUtilities_GroupSize
 local DwUtilities_InRaid = IsInRaid();
-ChatFrame1:AddMessage("DwUtilities- Group Size: ".. DwUtilities_GroupSize);
+if DwUtilitiesConfigValues[DwUtilitiesRealm][DwUtilitiesChar].GroupSizeDisplay then
+	if DwUtilities_GroupSize ~= GetNumGroupMembers() then
+		DwUtilities_GroupSize = GetNumGroupMembers();
+		ChatFrame1:AddMessage("DwUtilities- Group Size: ".. DwUtilities_GroupSize);
+	end
+end
 
 if DwUtilities_GroupSize <= 5 and DwUtilities_InRaid then
-DwUtilities_FrameButtonRaidPartySwitch:SetText("Convert to Party");
+DwUtilities_FrameButtonRaidPartySwitch:SetText("Make Party");
 else 
-DwUtilities_FrameButtonRaidPartySwitch:SetText("Convert to Raid");
+DwUtilities_FrameButtonRaidPartySwitch:SetText("Make Raid");
 end
 end
 
@@ -236,11 +243,20 @@ end
 
 --Disable unused buttons "Temporary until finished"
 function DisableUnused()
-DwUtilities_FrameButtonOptions:Disable();
 DwUtilities_FrameButtonVoiceInfo:Disable();
+DwUtilities_FrameButtonVoiceInfo:Hide();
 DwUtilities_FrameButtonLootRulez:Disable();
+DwUtilities_FrameButtonLootRulez:Hide();
+
 
 end
+
+
+
+
+
+
+
 
 
 

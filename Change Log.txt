@@ -1,0 +1,18 @@
+DwUtilities Change Log
+
+v1.1.0
+	Add Options panel.
+	Add option to disable group size announce.
+	Add option to hide when entering combat.
+	Add option to automatically show when entering group.
+	Some minor code clean up.
+	
+v1.0.1
+	Reduced chat message spam used for development.
+	Changed so it does not start automatically on login/reload.
+	
+v1.0
+	Initial Release.
+	
+v0.1
+	Development.

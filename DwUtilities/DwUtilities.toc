@@ -1,8 +1,16 @@
 ## Interface: 60000
 ## Title: Dw Utilities
 ## Author: Downwind
-## Version: 1.0.1
+## Version: 1.1.0
 ## Notes: A collection of utilities made by Downwind, GM of Strength in All on US-Stormrage
+## SavedVariables: DwUtilitiesConfigValues
 
-code.lua
-layout.xml
+mainLayout.xml
+optionsLayout.xml
+
+DwUtilitiesOptionsFrame.lua
+mainCode.lua
+
+
+
+

@@ -1,0 +1,179 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+ 
+ 
+<Frame name="DwUtilitiesOptionsFrame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
+    <!--Options Frame Size-->
+	<Size x="512" y="260"/>
+		
+	<!--Window background, boarder, and Title bar Layout-->
+    <Anchors>
+		<Anchor point="CENTER"/>
+	</Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" 
+                edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+                <BackgroundInsets>
+                        <AbsInset left="11" right="12" top="12" bottom="11"/>
+                </BackgroundInsets>
+                <TileSize><AbsValue val="32"/></TileSize>
+                <EdgeSize><AbsValue val="32"/></EdgeSize>
+        </Backdrop>
+		<Layers>
+                <Layer level="ARTWORK">
+                        <Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+                                <Size><AbsDimension x="350" y="64"/></Size>
+                                <Anchors>
+                                        <Anchor point="TOP">
+                                        <Offset><AbsDimension x="0" y="12"/></Offset>
+                                        </Anchor>
+                                </Anchors>
+                        </Texture>
+                </Layer>
+                <Layer level="OVERLAY">
+						<!--Title Text-->
+                        <FontString inherits="GameFontNormal" text="DwUtilities Options">
+                                <Anchors>
+                                        <Anchor point="TOP" relativeTo="$parent"></Anchor>
+                                </Anchors>
+                        </FontString>
+						<!--Enable Checkbox Text-->
+                        <FontString inherits="GameFontNormal" text="Enable">
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="50" y="-35"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						<!--HideOnCombat Checkbox Text-->
+						<FontString inherits="GameFontNormal" text="Hide when entering combat.">
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="50" y="-65"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						<!--ShowWhenGrouped Checkbox Text-->
+                        <FontString inherits="GameFontNormal" text="Automatically show when joining a group.">
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="50" y="-95"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						<!--GroupSizeDisplay Checkbox Text-->
+                        <FontString inherits="GameFontNormal" text="Display Group Size">
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="50" y="-125"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+                </Layer>
+        </Layers>
+		<Frames>
+             <!--Close Button-->
+                <Button name="$parentButtonClose" inherits="OptionsButtonTemplate" text="Close">
+                        <Anchors>
+                                <Anchor point="BOTTOMRIGHT">
+                                <Offset><AbsDimension x="-12" y="16"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwUtilitiesOptionsFrame:Hide(); </OnClick>
+                        </Scripts>
+                </Button>
+			<!--Default Button-->
+				<Button name="$parentButtonToDefault" inherits="OptionsButtonTemplate" text="Defaults">
+                        <Anchors>
+                                <Anchor point="BOTTOMLEFT">
+                                <Offset><AbsDimension x="13" y="16"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwUtilities_SetToDefault(); </OnClick>
+                        </Scripts>
+                </Button>
+			<!--Checkbox to enable addon-->
+			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonEnabled" inherits="OptionsCheckButtonTemplate">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="$parent">
+                                <Offset><AbsDimension x="20" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+
+                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                        </Scripts>
+                </CheckButton>
+			 
+				
+				
+				
+			<!--Checkbox to enable hidden when entering combat-->
+			<CheckButton name="DwUtilitiesOptionsFrameCheckButtonHideOnCombat" inherits="OptionsCheckButtonTemplate">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonEnabled">
+                                <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                        </Scripts>
+                </CheckButton>
+			<!--Checkbox to Automatically show addon when entering a group-->
+			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonShowWhenGrouped" inherits="OptionsCheckButtonTemplate">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonHideOnCombat">
+                                <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                        </Scripts>
+                </CheckButton>
+			<!--Checkbox to show group size-->
+			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonGroupSizeDisplay" inherits="OptionsCheckButtonTemplate">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonShowWhenGrouped">
+                                <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                        </Scripts>
+                </CheckButton>
+<!--TODO edit boxes for LootRules and VoiceInfo-->
+
+
+                
+        </Frames>
+			<Scripts>
+    <OnLoad>
+		tinsert(UISpecialFrames, self:GetName());
+		self:RegisterForDrag("LeftButton");
+		DwUtilities_ConfigChange();
+		
+	</OnLoad>
+	<OnEvent>
+		
+	</OnEvent>
+	<OnDragStart>
+		if(button == "LeftButton") then
+        self:StartMoving();
+		end
+	</OnDragStart>
+	<OnDragStop>
+		self:StopMovingOrSizing();
+	</OnDragStop>
+    <OnShow>
+		DwUtilitiesOptionsFrame_OnShow();
+		PlaySound("igCharacterInfoOpen");
+    </OnShow>
+    <OnHide>
+		PlaySound("igCharacterInfoClose");
+    </OnHide>
+  </Scripts>
+		
+ </Frame>
+ </Ui>
