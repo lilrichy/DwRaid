@@ -31,10 +31,15 @@ local EnterCombatFrame = CreateFrame("Frame")
 EnterCombatFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
 EnterCombatFrame:SetScript("OnEvent", function(self,event,...)
 	if DwUtilitiesConfigValues[DwUtilitiesRealm][DwUtilitiesChar].HideOnCombat then
-		ChatFrame1:AddMessage("Entering Combat, DwUtilities is now hidden type /dw to show again.");
+		if DwUtilities_Frame:IsVisible() then
 		DwUtilities_Frame:Hide();
+		ChatFrame1:AddMessage("DwUtilities- Entering Combat, DwUtilities is now hidden type /dw to show again.");
+		end
+		if DwUtilitiesOptionsFrame:IsVisible() then
 		DwUtilitiesOptionsFrame:Hide();
+		end
 	end
+	
 end)
 
 --Show the UI when Joining a group and update the buttons text

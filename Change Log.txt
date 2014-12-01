@@ -1,4 +1,6 @@
 DwUtilities Change Log
+v1.1.1
+	Changed hide in combat to only display chat text when window is actually hidden.
 
 v1.1.0
 	Add Options panel.
