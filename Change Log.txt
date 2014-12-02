@@ -1,4 +1,8 @@
 DwUtilities Change Log
+
+v1.1.2
+	Changed to try to fix upload issue with curse.
+
 v1.1.1
 	Changed hide in combat to only display chat text when window is actually hidden.
 
