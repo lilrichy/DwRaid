@@ -3,7 +3,7 @@
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
 
  
-<Frame name="DwUtilities_Frame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
+<Frame name="DwRaid_Frame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
 	<!--Main Frame Size-->
 	<Size x="212" y="256"/>
   
@@ -31,7 +31,7 @@
                         </Texture>
                 </Layer>
                 <Layer level="OVERLAY">
-                        <FontString inherits="GameFontNormal" text="DW Utilities">
+                        <FontString inherits="GameFontNormal" text="DwRaid">
                                 <Anchors>
                                         <Anchor point="TOP" relativeTo="$parent"></Anchor>
                                 </Anchors>
@@ -66,7 +66,7 @@
         </Button>
 		
 	<!--Convert To Raid / Party Button-->
-		<Button name="DwUtilities_FrameButtonRaidPartySwitch" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
+		<Button name="DwRaid_FrameButtonRaidPartySwitch" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
                         <Anchors>
                                 <Anchor point="TOPRIGHT">
                                 <Offset><AbsDimension x="-12" y="-60"/></Offset>
@@ -78,7 +78,7 @@
         </Button>	
 		
 	<!--Loot Method Button-->
-		<Button name="DwUtilities_FrameButtonLootMethSwitch" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
+		<Button name="DwRaid_FrameButtonLootMethSwitch" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
                         <Anchors>
                                 <Anchor point="TOPRIGHT">
                                 <Offset><AbsDimension x="-12" y="-90"/></Offset>
@@ -90,7 +90,7 @@
         </Button>	
 		
 	<!--Loot Threshold-->
-			<Button name="DwUtilities_FrameButtonLootThreshold" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
+			<Button name="DwRaid_FrameButtonLootThreshold" inherits="OptionsButtonTemplate" DisabledTexture="UIPanelButtonDisabledTexture">
                         <Anchors>
                                 <Anchor point="TOPRIGHT">
                                 <Offset><AbsDimension x="-12" y="-120"/></Offset>
@@ -103,7 +103,7 @@
 		
 	<!--Loot Rulez-->
 	<!-- NEEDS TO BE COMPLEATED-->
-		<Button name="DwUtilities_FrameButtonLootRulez" inherits="OptionsButtonTemplate" text="Loot Rulez" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
+		<Button name="DwRaid_FrameButtonLootRulez" inherits="OptionsButtonTemplate" text="Loot Rulez" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
                         <Anchors>
                                 <Anchor point="TOPLEFT">
                                 <Offset><AbsDimension x="12" y="-120"/></Offset>
@@ -116,7 +116,7 @@
 		
 	<!--Voice Info-->
 	<!-- NEEDS TO BE COMPLEATED-->
-		<Button name="DwUtilities_FrameButtonVoiceInfo" inherits="OptionsButtonTemplate" text="VoiceInfo" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
+		<Button name="DwRaid_FrameButtonVoiceInfo" inherits="OptionsButtonTemplate" text="VoiceInfo" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
                         <Anchors>
                                 <Anchor point="TOPLEFT">
                                 <Offset><AbsDimension x="12" y="-150"/></Offset>
@@ -129,7 +129,7 @@
 		
 		<!--Options Button-->
 		<!-- NEEDS TO BE COMPLEATED-->
-		<Button name="DwUtilities_FrameButtonOptions" inherits="OptionsButtonTemplate" text="Options" DisabledTexture="UIPanelButtonDisabledTexture"><!--Open Options Panel-->
+		<Button name="DwRaid_FrameButtonOptions" inherits="OptionsButtonTemplate" text="Options" DisabledTexture="UIPanelButtonDisabledTexture"><!--Open Options Panel-->
                         <Anchors>
                                 <Anchor point="TOPRIGHT">
                                 <Offset><AbsDimension x="-12" y="-30"/></Offset>
@@ -137,7 +137,7 @@
                         </Anchors>
                         <Scripts> 
 						
-                                <OnClick>DwUtilitiesOptionsFrame:Show();</OnClick>
+                                <OnClick>DwRaidOptionsFrame:Show();</OnClick>
                         </Scripts>
         </Button>	
 		
@@ -161,7 +161,7 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilities_Frame:Hide(); </OnClick>
+                                <OnClick> DwRaid_Frame:Hide(); </OnClick>
                         </Scripts>
         </Button>
   

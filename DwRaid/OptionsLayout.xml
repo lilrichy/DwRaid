@@ -3,7 +3,7 @@
  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
  
  
-<Frame name="DwUtilitiesOptionsFrame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
+<Frame name="DwRaidOptionsFrame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
     <!--Options Frame Size-->
 	<Size x="512" y="260"/>
 		
@@ -32,7 +32,7 @@
                 </Layer>
                 <Layer level="OVERLAY">
 						<!--Title Text-->
-                        <FontString inherits="GameFontNormal" text="DwUtilities Options">
+                        <FontString inherits="GameFontNormal" text="DwRaid Options">
                                 <Anchors>
                                         <Anchor point="TOP" relativeTo="$parent"></Anchor>
                                 </Anchors>
@@ -80,7 +80,7 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilitiesOptionsFrame:Hide(); </OnClick>
+                                <OnClick> DwRaidOptionsFrame:Hide(); </OnClick>
                         </Scripts>
                 </Button>
 			<!--Default Button-->
@@ -91,11 +91,11 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilities_SetToDefault(); </OnClick>
+                                <OnClick> DwRaid_SetToDefault(); </OnClick>
                         </Scripts>
                 </Button>
 			<!--Checkbox to enable addon-->
-			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonEnabled" inherits="OptionsCheckButtonTemplate">
+			    <CheckButton name="DwRaidOptionsFrameCheckButtonEnabled" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
                                 <Anchor point="TOPLEFT" relativeTo="$parent">
                                 <Offset><AbsDimension x="20" y="-30"/></Offset>
@@ -103,7 +103,7 @@
                         </Anchors>
                         <Scripts>
 
-                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                                <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
 			 
@@ -111,36 +111,36 @@
 				
 				
 			<!--Checkbox to enable hidden when entering combat-->
-			<CheckButton name="DwUtilitiesOptionsFrameCheckButtonHideOnCombat" inherits="OptionsCheckButtonTemplate">
+			<CheckButton name="DwRaidOptionsFrameCheckButtonHideOnCombat" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
-                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonEnabled">
+                                <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonEnabled">
                                 <Offset><AbsDimension x="0" y="-30"/></Offset>
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                                <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
 			<!--Checkbox to Automatically show addon when entering a group-->
-			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonShowWhenGrouped" inherits="OptionsCheckButtonTemplate">
+			    <CheckButton name="DwRaidOptionsFrameCheckButtonShowWhenGrouped" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
-                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonHideOnCombat">
+                                <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonHideOnCombat">
                                 <Offset><AbsDimension x="0" y="-30"/></Offset>
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                                <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
 			<!--Checkbox to show group size-->
-			    <CheckButton name="DwUtilitiesOptionsFrameCheckButtonGroupSizeDisplay" inherits="OptionsCheckButtonTemplate">
+			    <CheckButton name="DwRaidOptionsFrameCheckButtonGroupSizeDisplay" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
-                                <Anchor point="TOPLEFT" relativeTo="DwUtilitiesOptionsFrameCheckButtonShowWhenGrouped">
+                                <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonShowWhenGrouped">
                                 <Offset><AbsDimension x="0" y="-30"/></Offset>
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick> DwUtilitiesOptionsFrame_OnClick(); </OnClick>
+                                <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
 <!--TODO edit boxes for LootRules and VoiceInfo-->
@@ -152,7 +152,7 @@
     <OnLoad>
 		tinsert(UISpecialFrames, self:GetName());
 		self:RegisterForDrag("LeftButton");
-		DwUtilities_ConfigChange();
+		DwRaid_ConfigChange();
 		
 	</OnLoad>
 	<OnEvent>
@@ -167,7 +167,7 @@
 		self:StopMovingOrSizing();
 	</OnDragStop>
     <OnShow>
-		DwUtilitiesOptionsFrame_OnShow();
+		DwRaidOptionsFrame_OnShow();
 		PlaySound("igCharacterInfoOpen");
     </OnShow>
     <OnHide>
