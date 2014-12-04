@@ -152,6 +152,9 @@ end
 if DwRaid_method == "roundrobin" then
 DwRaid_FrameButtonLootMethSwitch:SetText("RoundRobin");
 end
+if DwRaid_method == "personal" then
+DwRaid_FrameButtonLootMethSwitch:SetText("personal");
+end
 end
 
 --Cycle through the Loot Methods and call for Button Update
@@ -161,7 +164,7 @@ local DwRaid_method = GetLootMethod();
 local DwRaid_inGroup = IsInGroup();
 if DwRaid_inGroup then
 
-if DwRaid_method == "freeforall" then
+if DwRaid_method == "personal" then
 SetLootMethod("group")
 end
 if DwRaid_method == "group" then
@@ -175,6 +178,9 @@ SetLootMethod("roundrobin")
 end
 if DwRaid_method == "roundrobin" then
 SetLootMethod("freeforall")
+end
+if DwRaid_method == "freeforall" then
+SetLootMethod("personal")
 end
 
 UpdateLootMethButton();
