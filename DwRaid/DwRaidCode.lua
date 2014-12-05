@@ -244,9 +244,9 @@ local PullTime = 10;
 local DwRaid_InRaid = IsInRaid();
 if DwRaid_InRaid then
 SendChatMessage("Starting 10 Second Pull Timer! Get Ready!", "RAID_WARNING");
-SendAddonMessage("BigWigs", "T:BWPull "..PullTime);
+SendAddonMessage("BigWigs", "T:BWPull "..PullTime, "RAID");
 else
-SendChatMessage("Starting 10 Second Pull Timer! Get Ready!", "Yell"); --INSTANCE_CHAT should change to instance when go live ?or maybe an option?
+SendChatMessage("Starting 10 Second Pull Timer! Get Ready!", "INSTANCE_CHAT"); --INSTANCE_CHAT 
 SendAddonMessage("BigWigs", "T:BWPull "..PullTime);
 end
 end
