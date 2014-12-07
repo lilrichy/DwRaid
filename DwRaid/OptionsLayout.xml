@@ -5,7 +5,7 @@
  
 <Frame name="DwRaidOptionsFrame" toplevel="true" parent="UIParent" enableMouse="true" movable="true">
     <!--Options Frame Size-->
-	<Size x="512" y="260"/>
+	<Size x="512" y="360"/>
 		
 	<!--Window background, boarder, and Title bar Layout-->
     <Anchors>
@@ -69,6 +69,39 @@
 										</Anchor>
                                 </Anchors>
                         </FontString>
+						<!--AutoStart Checkbox Text-->
+                        <FontString inherits="GameFontNormal" text="Automatically start when logging in or reloading." hidden="true">
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="50" y="-155"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						
+						<!--Edit buttons Text-->
+                        <FontString inherits="GameFontNormal" text="Edit Chat Messages" wrap ="true">
+							<Size>
+								<AbsDimension x="75" y="100"/>
+							</Size>	
+                                <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="25" y="-140"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						
+						<!--Notes text-->
+						<FontString inherits="GameFontNormal" wrap="true" text="Notes about editing ... The chat output is only sending out text that is on the same line.  ">
+							<Size>
+								<AbsDimension x="300" y="200"/>
+							</Size>		
+							<Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parent">
+										<Offset><AbsDimension x="150" y="-130"/></Offset>
+										</Anchor>
+                                </Anchors>
+                        </FontString>
+						
                 </Layer>
         </Layers>
 		<Frames>
@@ -94,6 +127,7 @@
                                 <OnClick> DwRaid_SetToDefault(); </OnClick>
                         </Scripts>
                 </Button>
+			 
 			<!--Checkbox to enable addon-->
 			    <CheckButton name="DwRaidOptionsFrameCheckButtonEnabled" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
@@ -106,12 +140,8 @@
                                 <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
-			 
-				
-				
-				
 			<!--Checkbox to enable hidden when entering combat-->
-			<CheckButton name="DwRaidOptionsFrameCheckButtonHideOnCombat" inherits="OptionsCheckButtonTemplate">
+				<CheckButton name="DwRaidOptionsFrameCheckButtonHideOnCombat" inherits="OptionsCheckButtonTemplate">
                         <Anchors>
                                 <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonEnabled">
                                 <Offset><AbsDimension x="0" y="-30"/></Offset>
@@ -143,11 +173,276 @@
                                 <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
                         </Scripts>
                 </CheckButton>
-<!--TODO edit boxes for LootRules and VoiceInfo-->
-
+			<!--Checkbox to Autostart-->
+			    <CheckButton name="DwRaidOptionsFrameCheckButtonAutoStart" inherits="OptionsCheckButtonTemplate" hidden="true">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonGroupSizeDisplay">
+                                <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwRaidOptionsFrame_OnClick(); </OnClick>
+                        </Scripts>
+                </CheckButton>
+			<!--Edit Loot Rules Button-->
+                <Button name="ButtonEditLootRules" inherits="OptionsButtonTemplate" text="Loot Rules">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrameCheckButtonAutoStart">
+                                <Offset><AbsDimension x="0" y="-60"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwRaidOptionsLootRulesFrame:Show(); </OnClick>
+                        </Scripts>
+                </Button>
+			<!--Edit VoiceInfo Button-->
+				<Button name="ButtonEditVoiceInfo" inherits="OptionsButtonTemplate" text="VoiceInfo">
+                        <Anchors>
+                                <Anchor point="TOPLEFT" relativeTo="ButtonEditLootRules">
+                                <Offset><AbsDimension x="0" y="-30"/></Offset>
+                                </Anchor>
+                        </Anchors>
+                        <Scripts>
+                                <OnClick> DwRaidOptionsVoiceInfoFrame:Show(); </OnClick>
+                        </Scripts>
+                </Button>
+				
+			<!--Edit Box for LootRules-->
+				<Frame name="DwRaidOptionsLootRulesFrame" toplevel="true" frameStrata="DIALOG" hidden="true" inherits="TranslucentFrameTemplate">
+					<Size>
+						<AbsDimension x="300" y="200"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="DwRaidOptionsFrame" relativePoint="TOPRIGHT" x="8" y="0"/>
+					</Anchors>
+					<Layers>
+						<Layer level="ARTWORK">
+							<FontString name="$parentTitle" inherits="GameFontNormal" text="Edit Loot Rules">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="24" y="-18"/>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+					<Frames>
+						<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-4" y="-4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Frame name="LootRulesTextEditContainer">
+							<Anchors>
+								<Anchor point="TOPLEFT" x="22" y="-36"/>
+								<Anchor point="TOPRIGHT" x="-22" y="-36"/>
+								<Anchor point="BOTTOM" x="0" y="42"/>
+							</Anchors>
+							<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+								<EdgeSize>
+									<AbsValue val="12"/>
+								</EdgeSize>
+								<TileSize>
+									<AbsValue val="8"/>
+								</TileSize>
+								<BackgroundInsets>
+									<AbsInset left="1" right="1" top="1" bottom="1"/>
+								</BackgroundInsets>
+							</Backdrop>
+							<Frames>
+								<ScrollFrame name="LootRulesTextEditScrollFrame" inherits="MinimalScrollFrameTemplate">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="4" y="-4"/>
+										</Anchor>
+										<Anchor point="BOTTOMRIGHT">
+											<Offset x="-26" y="4"/>
+										</Anchor>
+									</Anchors>
+									<ScrollChild>
+										<EditBox name="LootRulesTextEditBox" multiLine="true" letters="255" autoFocus="true">
+											<Size x="218" y="1"/>
+											<Anchors>
+												<Anchor point="TOPLEFT"/>
+											</Anchors>
+											<Scripts>
+												<OnTextChanged>
+													local text = self:GetText();
+													text = string.gsub(text, "\"", "");
+													ScrollingEdit_OnTextChanged(self, self:GetParent());
+												</OnTextChanged> 
+												<OnCursorChanged function="ScrollingEdit_OnCursorChanged"/>
+												<OnUpdate>
+													ScrollingEdit_OnUpdate(self, elapsed, self:GetParent());
+												</OnUpdate>
+												<OnEscapePressed function="EditBox_ClearFocus"/>
+												<OnEditFocusLost>
+													self:HighlightText(0, 0);
+												</OnEditFocusLost>
+											</Scripts>
+											<FontString inherits="ChatFontNormal"/>
+										</EditBox>
+									</ScrollChild>
+								</ScrollFrame>
+							</Frames>
+							<Scripts>
+								<OnLoad>
+									self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+									self:SetBackdropColor(0.0, 0.0, 0.0, 0.9);
+								</OnLoad>
+							</Scripts>
+						</Frame>
+						<Button name="$parentAcceptButton" inherits="UIPanelButtonTemplate" text="ACCEPT">
+							<Size x="90" y="22"/>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" x="24" y="16"/>
+							</Anchors>
+							<Scripts>
+								<OnClick> LootRulesAcceptBtnClick(); </OnClick>
+							</Scripts>
+						</Button>
+						<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE">
+							<Size x="90" y="22"/>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT" x="-24" y="16"/>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									self:GetParent():Hide();
+									DwRaidOptionsFrame_OnShow();
+								</OnClick>
+							</Scripts>
+						</Button>
+					</Frames>
+					<Scripts>
+						<OnLoad> DwRaidOptionsFrame_OnShow(); </OnLoad>
+						<OnHide>
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						</OnHide>
+					</Scripts>
+				</Frame>
+						
+			<!--Edit Box for VoiceInfo-->
+				<Frame name="DwRaidOptionsVoiceInfoFrame" toplevel="true" frameStrata="DIALOG" hidden="true" inherits="TranslucentFrameTemplate">
+					<Size>
+						<AbsDimension x="300" y="200"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="DwRaidOptionsLootRulesFrame" relativePoint="BOTTOMLEFT" x="0" y="0"/>
+					</Anchors>
+					<Layers>
+						<Layer level="ARTWORK">
+							<FontString name="$parentTitle" inherits="GameFontNormal" text="Edit Voice Info">
+								<Anchors>
+									<Anchor point="TOPLEFT" x="24" y="-18"/>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+					<Frames>
+						<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="-4" y="-4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Button>
+						<Frame name="VoiceInfoTextEditContainer">
+							<Anchors>
+								<Anchor point="TOPLEFT" x="22" y="-36"/>
+								<Anchor point="TOPRIGHT" x="-22" y="-36"/>
+								<Anchor point="BOTTOM" x="0" y="42"/>
+							</Anchors>
+							<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+								<EdgeSize>
+									<AbsValue val="12"/>
+								</EdgeSize>
+								<TileSize>
+									<AbsValue val="8"/>
+								</TileSize>
+								<BackgroundInsets>
+									<AbsInset left="1" right="1" top="1" bottom="1"/>
+								</BackgroundInsets>
+							</Backdrop>
+							<Frames>
+								<ScrollFrame name="VoiceInfoTextEditScrollFrame" inherits="MinimalScrollFrameTemplate">
+									<Anchors>
+										<Anchor point="TOPLEFT">
+											<Offset x="4" y="-4"/>
+										</Anchor>
+										<Anchor point="BOTTOMRIGHT">
+											<Offset x="-26" y="4"/>
+										</Anchor>
+									</Anchors>
+									<ScrollChild>
+										<EditBox name="VoiceInfoTextEditBox" multiLine="true" letters="255" autoFocus="true">
+											<Size x="218" y="1"/>
+											<Anchors>
+												<Anchor point="TOPLEFT"/>
+											</Anchors>
+											<Scripts>
+												<OnTextChanged>
+													local text = self:GetText();
+													text = string.gsub(text, "\"", "");
+													ScrollingEdit_OnTextChanged(self, self:GetParent());
+												</OnTextChanged> 
+												<OnCursorChanged function="ScrollingEdit_OnCursorChanged"/>
+												<OnUpdate>
+													ScrollingEdit_OnUpdate(self, elapsed, self:GetParent());
+												</OnUpdate>
+												<OnEscapePressed function="EditBox_ClearFocus"/>
+												<OnEditFocusLost>
+													self:HighlightText(0, 0);
+												</OnEditFocusLost>
+											</Scripts>
+											<FontString inherits="ChatFontNormal"/>
+										</EditBox>
+									</ScrollChild>
+								</ScrollFrame>
+							</Frames>
+							<Scripts>
+								<OnLoad>
+									self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+									self:SetBackdropColor(0.0, 0.0, 0.0, 0.9);
+								</OnLoad>
+							</Scripts>
+						</Frame>
+						<Button name="$parentAcceptButton" inherits="UIPanelButtonTemplate" text="ACCEPT">
+							<Size x="90" y="22"/>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" x="24" y="16"/>
+							</Anchors>
+							<Scripts>
+								<OnClick> VoiceInfoAcceptBtnClick(); </OnClick>
+							</Scripts>
+						</Button>
+						<Button name="$parentCloseButton" inherits="UIPanelButtonTemplate" text="CLOSE">
+							<Size x="90" y="22"/>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT" x="-24" y="16"/>
+							</Anchors>
+							<Scripts>
+								<OnClick>
+									self:GetParent():Hide();
+									DwRaidOptionsFrame_OnShow();
+								</OnClick>
+							</Scripts>
+						</Button>
+					</Frames>
+					<Scripts>
+						<OnLoad> DwRaidOptionsFrame_OnShow(); </OnLoad>
+						<OnHide>
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						</OnHide>
+					</Scripts>
+				</Frame>
 
                 
-        </Frames>
+       </Frames> 
 			<Scripts>
     <OnLoad>
 		tinsert(UISpecialFrames, self:GetName());

@@ -1,4 +1,9 @@
 DwRaid Change Log
+v1.1.5
+	Some Code Clean up.
+	Fixed Personal Loot option - For real this time...
+	Added chat messages for loot rules and voice info.
+	
 v1.1.4
 	Updated loot method to include personal loot
 	

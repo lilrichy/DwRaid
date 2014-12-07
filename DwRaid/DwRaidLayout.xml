@@ -101,8 +101,7 @@
                         </Scripts>
         </Button>	
 		
-	<!--Loot Rulez-->
-	<!-- NEEDS TO BE COMPLEATED-->
+	<!--Loot Rules-->
 		<Button name="DwRaid_FrameButtonLootRulez" inherits="OptionsButtonTemplate" text="Loot Rulez" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
                         <Anchors>
                                 <Anchor point="TOPLEFT">
@@ -110,12 +109,11 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick><!--ToDo--></OnClick>
+                                <OnClick>LootRulesChatSend();</OnClick>
                         </Scripts>
         </Button>	
 		
 	<!--Voice Info-->
-	<!-- NEEDS TO BE COMPLEATED-->
 		<Button name="DwRaid_FrameButtonVoiceInfo" inherits="OptionsButtonTemplate" text="VoiceInfo" DisabledTexture="UIPanelButtonDisabledTexture"><!--Edit Box, saved variable-->
                         <Anchors>
                                 <Anchor point="TOPLEFT">
@@ -123,7 +121,7 @@
                                 </Anchor>
                         </Anchors>
                         <Scripts>
-                                <OnClick><!--ToDo--></OnClick>
+                                <OnClick>VoiceInfoChatSend();</OnClick>
                         </Scripts>
         </Button>	
 		
