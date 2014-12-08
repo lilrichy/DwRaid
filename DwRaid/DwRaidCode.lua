@@ -9,11 +9,11 @@ buttons to make setting up and managing raid groups quicker and easier.
 --Global Variables 
 appName = "|cFF0000FFDwGuild:|r ";
 
-local DwRaid = CreateFrame("FRAME") DwRaid:Hide()
+local DwRaid = CreateFrame("FRAME")
 DwRaid:RegisterEvent("ADDON_LOADED")
 DwRaid:RegisterEvent("PLAYER_LOGIN")
 DwRaid:RegisterEvent("PLAYER_REGEN_DISABLED")
-DwRaid:RegisterEvent("PLAYER_REGEN_ENABLED")
+--DwRaid:RegisterEvent("PLAYER_REGEN_ENABLED")
 DwRaid:RegisterEvent("GROUP_JOINED")
 DwRaid:RegisterEvent("GROUP_ROSTER_UPDATE")
 
@@ -62,10 +62,10 @@ function DwRaid:OnEvent(event,arg1,...)
 		EnableDisable();
 	end
 	
---Handle AutoStart
+--[[Handle AutoStart
 	if DwRaidConfigValues[DwRaidRealm][DwRaidChar].AutoStart then
 		DwRaid_Frame:Show();
-	end
+	end--]]
 end
 DwRaid:SetScript("OnEvent", DwRaid.OnEvent);
 
