@@ -7,7 +7,7 @@ buttons to make setting up and managing raid groups quicker and easier.
 --]]
 
 --Global Variables 
-appName = "|cFF0000FFDwGuild:|r ";
+local appName = "|cFF0000FFDwRaid:|r ";
 
 local DwRaid = CreateFrame("FRAME")
 DwRaid:RegisterEvent("ADDON_LOADED")
