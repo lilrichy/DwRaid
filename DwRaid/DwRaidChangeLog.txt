@@ -1,8 +1,4 @@
 DwRaid Change Log
-
-v1.1.6 
-	Fixed naming variables - was causing bugs.
-
 v1.1.5
 	Some Code Clean up.
 	Fixed Personal Loot option - For real this time...

@@ -1,5 +1,5 @@
 -- Global variables
-local appName = "|cFF0000FFDwRaid:|r ";
+appName = "|cFF0000FFDwGuild:|r ";
 DwRaid_variablesLoaded = false;
 DwRaidRealm = GetCVar("realmName");
 DwRaidChar = UnitName("player");
