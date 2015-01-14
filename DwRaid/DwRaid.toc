@@ -1,7 +1,7 @@
 ## Interface: 60000
 ## Title: DwRaid
 ## Author: Downwind
-## Version: 1.1.5
+## Version: 1.1.7
 ## Notes: A collection of Raid utilities made by Downwind, GM of Strength in All on US-Stormrage
 ## SavedVariables: DwRaidConfigValues
 

@@ -1,5 +1,8 @@
 DwRaid Change Log
 
+v1.1.7
+	Fixing git error.
+
 v1.1.6 
 	Fixed naming variables - was causing bugs.
 
