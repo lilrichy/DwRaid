@@ -27,6 +27,9 @@ function DwRaid_VARIABLES_LOADED()
 end
 
 function DwRaidOptionsFrame_OnShow()
+--Check to see if variables exist before showing them
+	if DwRaid_VARIABLES_LOADED then
+	
 -- read settings and change check buttons
     DwRaidOptionsFrameCheckButtonEnabled:SetChecked(DwRaidConfigValues[DwRaidRealm][DwRaidChar].Enabled);
     DwRaidOptionsFrameCheckButtonHideOnCombat:SetChecked(DwRaidConfigValues[DwRaidRealm][DwRaidChar].HideOnCombat);           
@@ -37,7 +40,11 @@ function DwRaidOptionsFrame_OnShow()
 	VoiceInfoTextEditBox:SetText(DwRaidConfigValues[DwRaidRealm][DwRaidChar].VoiceInfoText);
 	--ChatFrame1:AddMessage("Settings read");
 	DwRaid_ConfigChange();
-end
+
+	else
+	DwRaid_VARIABLES_LOADED();
+	end
+	end
  
 function DwRaidOptionsFrame_OnClick()
 --Update settings when user changes something
